@@ -16,15 +16,18 @@ public class EmpWage {
 		int wagePerHour = 20;
 		int numberOfHours = 8;
 		int partTimeHours = 4;
+		int workingDays = 20;
 		int isPresent = (int) Math.floor(Math.random() * 10) % 3;
 		switch (isPresent) {
 		case 1 :
 			System.out.println("Employee is Present : P");
-			System.out.println("Employee earn = " + numberOfHours * wagePerHour);
+			System.out.println("Employee earn per Day = " + numberOfHours * wagePerHour);
+			System.out.println("Employee Monthly Earn = " + (numberOfHours * wagePerHour) * workingDays);
 			break;
 		case 2 :
 			System.out.println("Employee is Part Time Present : (1/2) P");
-			System.out.println("Employee earn with PartTime = " +partTimeHours * wagePerHour);
+			System.out.println("Employee earn PartTime per Day = " +partTimeHours * wagePerHour);
+			System.out.println("Employee Monthly Earn          = " + (partTimeHours * wagePerHour) * workingDays);
 			break;
 		case 0 :
 			System.out.println("Employee is Absent  : A");
