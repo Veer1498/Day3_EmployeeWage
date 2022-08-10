@@ -5,6 +5,8 @@ package empWage;
  *
  */
 
+import java.util.Scanner;
+
 // Class Method
 public class EmployeeWageMethod {
 	/*
@@ -19,63 +21,83 @@ public class EmployeeWageMethod {
 	 * Finally Computed TotalEmployee of Wage for Max Working Hours or Days
 	 *  
 	 */
+	public Scanner sc = new Scanner(System.in);
 	public static final int employeePresent = 1;
 	public static final int employeePartTime = 2;
-	public static final int WagePerHour = 20;
-	public static final int NumberOfWorkingDays =20;
-	public static final int TotalHoursinMonth = 100;
 	
-	static int numberOfHours;
-	static int totalWorkHours;
-	static int totalWorkDays;
-	static int nHours;
+	public String companyName;
+	public int WagePerHour;
+	public int NumberOfWorkingDays;
+	public int TotalHoursinMonth;
+	
+	public int numberOfHours;
+	public int totalWorkHours;
+	public int totalWorkDays;
+	public int nHours;
+	public int totalWage;
+	static int n;
+	
+	static int arr1[] = new int [5];
+	static String arr2[] = new String [5];
+
 	
 	//Welcome Function
-	public void Welcome() {
+	public void welcome() {
 		System.out.println("Welcome to Employee Wage Computation Program");
 		System.out.println("*********************************************\n");
 	}
+	//company Function
+	public void company() {
+		System.out.println("Please Enter Company Name");
+		companyName = sc.next();
+		System.out.println("Please Enter Wage per Hour of "+companyName);
+		WagePerHour = sc.nextInt();
+		System.out.println("Please Enter Number of Working Days of "+companyName);
+		NumberOfWorkingDays = sc.nextInt();
+		System.out.println("Please Enter Max Number of Hours in Month of "+companyName);
+		TotalHoursinMonth = sc.nextInt();
+	}
 	
 	//EmpWageMethod Function
-	public void EmpWageMethod() {
-		while (totalWorkHours < TotalHoursinMonth && totalWorkDays < NumberOfWorkingDays) {
-			int isPresent = (int) Math.floor(Math.random()*10) %3;
-			switch (isPresent) {
-				case employeePresent :
-					numberOfHours =8;
-					totalWorkHours =totalWorkHours + numberOfHours;
-					totalWorkDays++;
-					System.out.println("Day "+totalWorkDays);
-					System.out.println("Employee is Present");
-					System.out.println("Employee earn = " + numberOfHours * WagePerHour);
-					nHours+=numberOfHours;
-					break;
-					
-				case employeePartTime :
-					numberOfHours =4;
-					totalWorkHours =totalWorkHours + numberOfHours;
-					totalWorkDays++;
-					System.out.println("Day "+totalWorkDays);
-					System.out.println("Employee is Part Time Present");
-					System.out.println("Employee earn with PartTime= " + numberOfHours* WagePerHour);
-					nHours+=numberOfHours;
-					break;
+	public void empWageMethod() {
+		System.out.println("Please Enter Num of Companies you want to Enter");
+		n = sc.nextInt();
+		for(int i = 0; i <= n-1; i++) {
+			System.out.println("\nCompany "+(i+1));
+			company(); // Called Company Method.
+			while (totalWorkHours < TotalHoursinMonth && totalWorkDays < NumberOfWorkingDays) {
+				int isPresent = (int) Math.floor(Math.random()*10) %3;
+				switch (isPresent) {
+					case employeePresent :
+						numberOfHours =8;
+						totalWorkHours =totalWorkHours + numberOfHours;
+						totalWorkDays++;
+						nHours+=numberOfHours;
+						break;
+						
+					case employeePartTime :
+						numberOfHours =4;
+						totalWorkHours =totalWorkHours + numberOfHours;
+						totalWorkDays++;
+						nHours+=numberOfHours;
+						break;
 
-				default :
-					numberOfHours = 0;
-					totalWorkDays++;
-					System.out.println("Day "+totalWorkDays);
-					System.out.println("Employee is Absent");
-					System.out.println("Employee earn = 0");
+					default :
+						numberOfHours = 0;
+						totalWorkDays++;
 					break;
+				}
 			}
-			System.out.println(" ");
+			int totalWage = nHours * WagePerHour;
+			arr1[i] = totalWage;
+			arr2[i] = companyName;
 		}
-		
-		System.out.println("\ndays  = " + totalWorkDays + "| Num of Hours = " +nHours);
-		System.out.println(	"\nEmployee Monthly Earn for Max"
-				+ " Days or Hours = Rs." + (nHours * WagePerHour));
-		
-	
+		System.out.println("\nTOTAL WAGES ");
+		System.out.println("============\n");
+		for(int i = 0; i <= n-1; i++) {
+			System.out.println(arr2[i]+" = Rs."+arr1[i]);
+		}
 	}
+	
+	
 }
