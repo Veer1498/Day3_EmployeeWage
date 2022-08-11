@@ -21,16 +21,18 @@ public class EmpWageMain {
 	private int numOfCompany = 0;
 	private EmployeeWageCompany[] companyArray;
 	
+	//Constructor
 	public EmpWageMain() {
 		companyArray = new EmployeeWageCompany[3];
 	}
+	
+	//Main Function
 	public static void main(String[] args) {
 		
 			EmpWageMain empwage =new EmpWageMain();
 			empwage.Welcome();
-			System.out.println("");
-			empwage.addCompany("Amazon",32, 20,100);
-			empwage.addCompany("FlipKart",24, 20,100);
+			empwage.addCompany("ISRO",32, 20,100);
+			empwage.addCompany("NASA",24, 20,100);
 			empwage.computeWage();
 	}
 	
@@ -56,25 +58,21 @@ public class EmpWageMain {
 	//Compute function to calculate wages.
 	public static int compute(EmployeeWageCompany EmployeeWageCompany) {
 		 int numberOfHours = 0;
-		 int nHours=0;
 	     int totalWorkDays = 0;
 	     int totalWorkHours = 0;
-		 int totalEmployeeWage =0;
 		 
 		 while (totalWorkHours< EmployeeWageCompany.getTotalHoursinMonth() && totalWorkDays < EmployeeWageCompany.getNumberOfWorkingDays()) {
 				int isPresent = (int) Math.floor(Math.random()*10) %3;
 				switch (isPresent) {
 					case employeePresent :
-						numberOfHours =8;
+						numberOfHours = 8;
 						totalWorkHours =totalWorkHours + numberOfHours;
 						totalWorkDays++;
-						nHours+=numberOfHours;
 						break;
 					case employeePartTime :
 						numberOfHours = 4;
 						totalWorkHours = totalWorkHours + numberOfHours;
 						totalWorkDays++;
-						nHours += numberOfHours;
 						break;
 
 					default :
