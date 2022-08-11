@@ -27,6 +27,7 @@ public class EmployeeWageCompany {
 	private int TotalHoursinMonth;
 	private int totalWage;
 	
+	//Constructor
 	public  EmployeeWageCompany(String Company, int WagePerHour, int NumberOfWorkingDays, int TotalHoursinMonth) {
 	
 		this.Company = Company;
@@ -35,6 +36,7 @@ public class EmployeeWageCompany {
 		this.TotalHoursinMonth = TotalHoursinMonth;
 		
 	}
+	//Getter and Setters
 	public String getCompany() {
 		return Company;
 	}
@@ -62,6 +64,7 @@ public class EmployeeWageCompany {
 	public void setTotalWage(int totalWage) {
 		this.totalWage = totalWage;
 	}
+	
 	@Override
 	public String toString() {
 		return "[Company= " + Company + ", WagePerHour= " + WagePerHour + ", NumberOfWorkingDays= "
